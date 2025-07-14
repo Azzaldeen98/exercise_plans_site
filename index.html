@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="متجر خطط التمارين والتغذية الرقمية - احصل على أفضل البرامج التدريبية وخطط التغذية المصممة من قبل خبراء">
+    <title>لياقتك | متجر خطط التمارين والتغذية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-container:hover .preview-overlay {
+            opacity: 1;
+        }
+        
+        .payment-method {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-dumbbell text-blue-600 text-2xl mr-2"></i>
+                <a href="#" class="text-xl font-bold text-gray-800">لياقتك</a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6 space-x-reverse">
+                <a href="#plans" class="text-gray-700 hover:text-blue-600 font-medium">الخطط</a>
+                <a href="#features" class="text-gray-700 hover:text-blue-600 font-medium">المميزات</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">آراء العملاء</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium">الأسئلة الشائعة</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#plans" class="text-gray-700 hover:text-blue-600 font-medium py-2">الخطط</a>
+                <a href="#features" class="text-gray-700 hover:text-blue-600 font-medium py-2">المميزات</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium py-2">آراء العملاء</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium py-2">الأسئلة الشائعة</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">خطط تمارين وتغذية احترافية</h1>
+                <p class="text-xl mb-8 opacity-90">احصل على أفضل البرامج التدريبية وخطط التغذية المصممة من قبل خبراء لمساعدتك في تحقيق أهدافك الصحية والبدنية</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+                    <a href="#plans" class="bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg text-center transition duration-300">تصفح الخطط</a>
+                    <a href="#features" class="border border-white hover:bg-white hover:text-blue-600 font-bold py-3 px-6 rounded-lg text-center transition duration-300">المزيد عنا</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fitness Plan" class="rounded-lg shadow-xl w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">لماذا تختار خططنا؟</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clipboard-check text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">مصممة من قبل خبراء</h3>
+                    <p class="text-gray-600">خطط تم تصميمها من قبل مدربين وخبراء تغذية معتمدين لضمان فعاليتها وأمانها</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">نتائج سريعة</h3>
+                    <p class="text-gray-600">تم تصميم الخطط لتحقيق أقصى استفادة في أقل وقت ممكن مع الحفاظ على الصحة</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">سهولة الاستخدام</h3>
+                    <p class="text-gray-600">يمكنك الوصول إلى خططك من أي جهاز في أي وقت، مع إمكانية الطباعة والتعديل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">خطط التمارين والتغذية</h2>
+            <p class="text-xl text-center mb-12 text-gray-600">اختر الخطة التي تناسب أهدافك</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Plan 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md plan-card transition duration-300">
+                    <div class="preview-container relative">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5aaca0668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beginner Plan" class="w-full h-48 object-cover">
+                        <div class="preview-overlay">
+                            <button class="bg-white text-blue-600 font-bold py-2 px-4 rounded" onclick="openPreview('beginner')">
+                                معاينة الخطة
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">الخطة للمبتدئين</h3>
+                        <p class="text-gray-600 mb-4">برنامج تمارين وتغذية مثالي للبدء في رحلتك الصحية</p>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="text-gray-500 text-sm mr-2">(128)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$29.99</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openCheckout('beginner')">
+                                شراء الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plan 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md plan-card transition duration-300">
+                    <div class="preview-container relative">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Weight Loss Plan" class="w-full h-48 object-cover">
+                        <div class="preview-overlay">
+                            <button class="bg-white text-blue-600 font-bold py-2 px-4 rounded" onclick="openPreview('weight-loss')">
+                                معاينة الخطة
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">خطة فقدان الوزن</h3>
+                        <p class="text-gray-600 mb-4">برنامج متكامل لخسارة الوزن بشكل صحي ومستدام</p>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400 mr-1"></i>
+                            <span class="text-gray-500 text-sm mr-2">(95)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$39.99</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openCheckout('weight-loss')">
+                                شراء الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md plan-card transition duration-300">
+                    <div class="preview-container relative">
+                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Muscle Building Plan" class="w-full h-48 object-cover">
+                        <div class="preview-overlay">
+                            <button class="bg-white text-blue-600 font-bold py-2 px-4 rounded" onclick="openPreview('muscle-building')">
+                                معاينة الخطة
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">خطة بناء العضلات</h3>
+                        <p class="text-gray-600 mb-4">برنامج متكامل لزيادة الكتلة العضلية والقوة البدنية</p>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="text-gray-500 text-sm mr-2">(142)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$49.99</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="openCheckout('muscle-building')">
+                                شراء الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">آراء عملائنا</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">سارة محمد</h4>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"خطة فقدان الوزن كانت رائعة! فقدت 12 كيلو في 3 أشهر باتباع التعليمات. التمارين كانت مناسبة لمستواي والتغذية سهلة التطبيق."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Ahmed" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">أحمد خالد</h4>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"خطة بناء العضلات غيرت شكل جسمي تمامًا. التمارين والتغذية كانت واضحة وسهلة المتابعة. زادت قوتي وكتلتي العضلية بشكل ملحوظ."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Noura" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">نورة عبدالله</h4>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400 mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"كنت مبتدئة في الرياضة، الخطة للمبتدئين كانت مثالية. التمارين سهلة والفيديوهات التوضيحية ساعدتني كثيرًا. أشعر بتحسن كبير في صحتي وطاقتي."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">الأسئلة الشائعة</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-right focus:outline-none" onclick="toggleFAQ(1)">
+                        <span class="text-lg font-medium text-gray-800">كيف أحصل على الخطة بعد الشراء؟</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-1"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden" id="faq-answer-1">
+                        بعد إتمام عملية الدفع بنجاح، سيتم توجيهك تلقائيًا إلى صفحة التنزيل حيث يمكنك تحميل ملفات الخطة مباشرة. كما سنرسل لك رابط التنزيل على البريد الإلكتروني المسجل لدينا، لذا تأكد من إدخال بريدك الإلكتروني بشكل صحيح.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-right focus:outline-none" onclick="toggleFAQ(2)">
+                        <span class="text-lg font-medium text-gray-800">هل يمكنني تعديل الخطة حسب احتياجاتي؟</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-2"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden" id="faq-answer-2">
+                        نعم، جميع خططنا تأتي بصيغة PDF قابلة للتعديل. يمكنك طباعتها أو تعديلها رقميًا حسب احتياجاتك الشخصية. ومع ذلك، ننصح باستشارة مدرب أو أخصائي تغذية قبل إجراء أي تعديلات جوهرية على الخطة.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-right focus:outline-none" onclick="toggleFAQ(3)">
+                        <span class="text-lg font-medium text-gray-800">ما هي طرق الدفع المتاحة؟</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-3"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden" id="faq-answer-3">
+                        نقبل حاليًا الدفع عبر بطاقات الائتمان والخصم (فيزا، ماستركارد) وكذلك عبر PayPal. نحن نعمل على إضافة المزيد من خيارات الدفع المحلية قريبًا.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-right focus:outline-none" onclick="toggleFAQ(4)">
+                        <span class="text-lg font-medium text-gray-800">هل هناك ضمان لاسترداد المال؟</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-4"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden" id="faq-answer-4">
+                        نعم، نقدم ضمان استرداد المال لمدة 14 يومًا من تاريخ الشراء. إذا لم تكن راضيًا عن الخطة لأي سبب، يمكنك التواصل معنا وسنقوم برد المبلغ بالكامل دون أي أسئلة.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-right focus:outline-none" onclick="toggleFAQ(5)">
+                        <span class="text-lg font-medium text-gray-800">هل الخطة مناسبة للمبتدئين؟</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" id="faq-icon-5"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden" id="faq-answer-5">
+                        لدينا خطط مصممة خصيصًا للمبتدئين (الخطة للمبتدئين). هذه الخطط تبدأ من المستوى الأساسي مع شرح مفصل لكل تمرين. إذا كنت مبتدئًا، ننصحك بالبدء بهذه الخطة ثم الترقية إلى خطط أكثر تقدمًا لاحقًا.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">جاهز لبدء رحلتك الصحية؟</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">اختر الخطة التي تناسب أهدافك وابدأ رحلتك نحو حياة أكثر صحة ولياقة اليوم</p>
+            <a href="#plans" class="bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg inline-block transition duration-300">تصفح الخطط الآن</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-dumbbell text-blue-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">لياقتك</span>
+                    </div>
+                    <p class="text-gray-400">متجر خطط التمارين والتغذية الرقمية لمساعدتك في تحقيق أهدافك الصحية والبدنية.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#plans" class="text-gray-400 hover:text-white transition">الخطط</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">المميزات</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">آراء العملاء</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">تواصل معنا</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">info@lyaqatuk.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">+966 12 345 6789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">تابعنا</h3>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="bg-gray-700 hover:bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    
+                    <h3 class="text-lg font-bold mt-6 mb-4">طرق الدفع</h3>
+                    <div class="flex space-x-3 space-x-reverse">
+                        <div class="payment-method bg-white p-2 rounded">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-6">
+                        </div>
+                        <div class="payment-method bg-white p-2 rounded">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-6">
+                        </div>
+                        <div class="payment-method bg-white p-2 rounded">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="h-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400">
+                <p>© 2023 لياقتك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold" id="preview-title">معاينة الخطة</h3>
+                <button onclick="closePreview()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="preview-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Content will be loaded here by JavaScript -->
+                </div>
+            </div>
+            <div class="p-4 border-t flex justify-end">
+                <button onclick="closePreview()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded mr-2">
+                    إغلاق
+                </button>
+                <button id="buy-from-preview" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                    شراء الخطة
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-md w-full">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold">إتمام الشراء</h3>
+                <button onclick="closeCheckout()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2" id="checkout-plan-name">الخطة للمبتدئين</h4>
+                    <p class="text-gray-600 mb-2" id="checkout-plan-desc">برنامج تمارين وتغذية مثالي للبدء في رحلتك الصحية</p>
+                    <p class="text-xl font-bold" id="checkout-plan-price">$29.99</p>
+                </div>
+                
+                <form id="checkout-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block mb-1 font-medium">الاسم الكامل</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block mb-1 font-medium">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-1 font-medium">طريقة الدفع</label>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="credit-card" name="payment" value="credit-card" class="mr-2" checked>
+                                <label for="credit-card">بطاقة ائتمان/خصم</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="paypal" name="payment" value="paypal" class="mr-2">
+                                <label for="paypal">PayPal</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="credit-card-fields">
+                        <div class="mb-4">
+                            <label for="card-number" class="block mb-1 font-medium">رقم البطاقة</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="expiry-date" class="block mb-1 font-medium">تاريخ الانتهاء</label>
+                                <input type="text" id="expiry-date" placeholder="MM/YY" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="cvv" class="block mb-1 font-medium">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="paypal-fields" class="hidden">
+                        <p class="text-gray-600">سيتم توجيهك إلى موقع PayPal لإتمام عملية الدفع</p>
+                    </div>
+                </form>
+            </div>
+            <div class="p-4 border-t flex justify-end">
+                <button onclick="closeCheckout()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded mr-2">
+                    إلغاء
+                </button>
+                <button onclick="processPayment()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                    تأكيد الدفع
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-md w-full p-6 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">تمت عملية الشراء بنجاح!</h3>
+            <p class="text-gray-600 mb-6">شكرًا لشرائك من متجرنا. يمكنك الآن تحميل خطتك من الرابط أدناه.</p>
+            <a href="#" id="download-link" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block transition duration-300 mb-4">
+                <i class="fas fa-download mr-2"></i> تحميل الخطة
+            </a>
+            <p class="text-sm text-gray-500">سيصلك أيضًا رابط التحميل على بريدك الإلكتروني</p>
+            <button onclick="closeSuccess()" class="mt-6 text-blue-600 hover:text-blue-800 font-medium">
+                العودة إلى الموقع
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // FAQ toggle
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('transform');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Plan preview data
+        const plans = {
+            'beginner': {
+                title: 'الخطة للمبتدئين',
+                price: '$29.99',
+                description: 'برنامج تمارين وتغذية مثالي للبدء في رحلتك الصحية',
+                features: [
+                    '12 أسبوع من التمارين المصممة للمبتدئين',
+                    'خطة تغذية سهلة المتابعة مع بدائل متنوعة',
+                    'فيديوهات توضيحية لكل التمارين',
+                    'نصائح يومية للالتزام بالبرنامج',
+                    'جدول متابعة لتسجيل التقدم'
+                ],
+                previewImages: [
+                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1571019614242-c5c5aaca0668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                ]
+            },
+            'weight-loss': {
+                title: 'خطة فقدان الوزن',
+                price: '$39.99',
+                description: 'برنامج متكامل لخسارة الوزن بشكل صحي ومستدام',
+                features: [
+                    '16 أسبوع من التمارين المخصصة لحرق الدهون',
+                    'خطة تغذية دقيقة مع حساب السعرات',
+                    'تمارين كارديو وتمارين قوة',
+                    'نصائح للتغلب على الرغبة الشديدة في الأكل',
+                    'دليل للوجبات الصحية السريعة'
+                ],
+                previewImages: [
+                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1571019614242-c5c5aaca0668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                ]
+            },
+            'muscle-building': {
+                title: 'خطة بناء العضلات',
+                price: '$49.99',
+                description: 'برنامج متكامل لزيادة الكتلة العضلية والقوة البدنية',
+                features: [
+                    '20 أسبوع من تمارين القوة المتقدمة',
+                    'خطة تغذية عالية البروتين',
+                    'تمارين لكل مجموعة عضلية',
+                    'نصائح لزيادة الوزن الصحي',
+                    'دليل للمكملات الغذائية المفيدة'
+                ],
+                previewImages: [
+                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1571019614242-c5c5aaca0668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                ]
+            }
+        };
+
+        let currentPlan = '';
+
+        // Open plan preview
+        function openPreview(planId) {
+            currentPlan = planId;
+            const plan = plans[planId];
+            
+            document.getElementById('preview-title').textContent = `معاينة ${plan.title}`;
+            document.getElementById('buy-from-preview').setAttribute('onclick', `openCheckout('${planId}')`);
+            
+            const previewContent = document.getElementById('preview-content');
+            previewContent.innerHTML = `
+                <div>
+                    <h4 class="text-xl font-bold mb-4">مميزات الخطة</h4>
+                    <ul class="space-y-3">
+                        ${plan.features.map(feature => `<li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>${feature}</span>
+                        </li>`).join('')}
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold mb-4">تفاصيل الخطة</h4>
+                        <p class="text-gray-600">${plan.description}</p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold mb-4">السعر</h4>
+                        <p class="text-2xl font-bold text-blue-600">${plan.price}</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    ${plan.previewImages.map((img, index) => `
+                        <div class="border rounded-lg overflow-hidden">
+                            <img src="${img}" alt="Preview ${index + 1}" class="w-full h-48 object-cover">
+                            <div class="p-3 bg-gray-50 text-center text-sm text-gray-500">صورة توضيحية ${index + 1}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        // Close preview
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        // Open checkout
+        function openCheckout(planId) {
+            currentPlan = planId;
+            const plan = plans[planId];
+            
+            document.getElementById('checkout-plan-name').textContent = plan.title;
+            document.getElementById('checkout-plan-desc').textContent = plan.description;
+            document.getElementById('checkout-plan-price').textContent = plan.price;
+            
+            // Close preview if open
+            closePreview();
+            
+            // Show checkout modal
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        // Close checkout
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        // Toggle payment fields
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'credit-card') {
+                    document.getElementById('credit-card-fields').classList.remove('hidden');
+                    document.getElementById('paypal-fields').classList.add('hidden');
+                } else {
+                    document.getElementById('credit-card-fields').classList.add('hidden');
+                    document.getElementById('paypal-fields').classList.remove('hidden');
+                }
+            });
+        });
+
+        // Process payment
+        function processPayment() {
+            // Validate form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            if (!name || !email) {
+                alert('الرجاء إدخال جميع الحقول المطلوبة');
+                return;
+            }
+            
+            if (paymentMethod === 'credit-card') {
+                const cardNumber = document.getElementById('card-number').value;
+                const expiryDate = document.getElementById('expiry-date').value;
+                const cvv = document.getElementById('cvv').value;
+                
+                if (!cardNumber || !expiryDate || !cvv) {
+                    alert('الرجاء إدخال جميع تفاصيل بطاقة الدفع');
+                    return;
+                }
+            }
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                closeCheckout();
+                
+                // Set download link
+                document.getElementById('download-link').href = `#${currentPlan}-download`;
+                
+                // Show success modal
+                document.getElementById('success-modal').classList.remove('hidden');
+            }, 1500);
+        }
+
+        // Close success modal
+        function closeSuccess() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
